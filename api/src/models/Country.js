@@ -6,9 +6,7 @@ module.exports = (sequelize) => {
   sequelize.define('country', {
     id: {      
       allowNull: false,
-      type: DataTypes.STRING(3), 
-      //! codigo de 3 letras 
-      // TODO chequear como vienen de la api
+      type: DataTypes.STRING, 
       primaryKey: true,
 
   }, 
