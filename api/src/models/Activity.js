@@ -5,24 +5,25 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('activity', {
     id: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         autoincrement: true, 
         primaryKey: true,
-        allowNull: false
+        // allowNull: false
     },
     name: {
         type: DataTypes.STRING,
         unique: true 
     },
     difficulty: {
-        type: DataTypes.ENUM("1", "2", "3", "4", "5")
+        type: DataTypes.INTEGER,
+        validate: {min: 1, max: 5},
+        allowNull: false
     }, 
-    //TODO: hacerlo como INTERGER y validar que sea de 1 a 5
-    //allowNull: false
-    //validate{ min 1, max 5}
+
     
     duration: {
-        type: DataTypes.STRING, 
+        type: DataTypes.INTEGER, 
     },
     season: {
         type: DataTypes.ENUM("Verano", "Otoño", "Invierno", "Primavera")

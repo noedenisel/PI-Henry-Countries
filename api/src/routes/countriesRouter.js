@@ -7,9 +7,9 @@ const { getCountriesHandler, getCountryHandler} = require ("../handlers/countrie
 const countriesRouter = Router();
 
 
-countriesRouter.get("/countries",  getCountriesHandler)
+countriesRouter.get("/",  getCountriesHandler)
 
-countriesRouter.get("/countries/:id", getCountryHandler )
+countriesRouter.get("/:id", getCountryHandler )
 
 
 module.exports = countriesRouter

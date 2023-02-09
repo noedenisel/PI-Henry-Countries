@@ -1,12 +1,23 @@
+const { apiCountries } = require ("../controllers/dbCountries")
+
 const getCountriesHandler = (req, res) => {
+    const { name } = req.query
+    
     //? llama a la funcion que obtiene los datos de la db
-    apiCountries()
+    apiCountries() //!ojo cuando hago el get tira error en consola
+    
+    
     //? cuando tenga los datos, responde
- getCountriesHandler.send("NIY: Mostrando los paises por nombre")
+    if(name !== undefined) res.send(`Quiero buescar todos los que se llamen ${name}`)
+    
+    else res.send("Quiero mostrar todos los paises")
 }
 
+
+
 const getCountryHandler = (req, res) => {
-     res.send("NIY: Mostrando los paises por ID")
+    const { id } = req.params
+    res.send(`detalle del pais del ID ${id}`)
 }
 
 

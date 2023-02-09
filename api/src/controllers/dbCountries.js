@@ -21,7 +21,7 @@ const apiCountries = async () => {
         apiInformation = await Country.bulkCreate(allCountries) //? guardo los datos con el formato unificado en mi db
         return apiInformation
     } catch (error) {
-        throw new Error (error.message)
+        res.status(400).json({error: error.message})
     }
 }
 
