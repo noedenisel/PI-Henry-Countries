@@ -1,46 +1,34 @@
+//                       _oo0oo_
+//                      o8888888o
+//                      88" . "88
+//                      (| -_- |)
+//                      0\  =  /0
+//                    ___/`---'\___
+//                  .' \\|     |// '.
+//                 / \\|||  :  |||// \
+//                / _||||| -:- |||||- \
+//               |   | \\\  -  /// |   |
+//               | \_|  ''\---/''  |_/ |
+//               \  .-\__  '-'  ___/-. /
+//             ___'. .'  /--.--\  `. .'___
+//          ."" '<  `.___\_<|>_/___.' >' "".
+//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+//         \  \ `_.   \_ __\ /__ _/   .-` /  /
+//     =====`-.____`.___ \_____/___.-`___.-'=====
+//                       `=---='
+//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 const { Router } = require('express');
-const axios = require('axios');
 const { Country } = require ("../db");
 const { apiCountries } = require('../controllers/dbCountries');
-
-
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+const countriesRouter = require ("./countriesRouter")
+const activitiesRouter = require ("./activitiesRouter")
 
 
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-
-router.get("/countries", async (req,res)=>{
-    apiCountries()
-   try {
-    res.status(200).send("estoy en countries")
-   } catch (error) {
-    res.status(400).json({error: error.message})
-    }
-})
-
-router.get("/:id", (req,res)=>{
-    const {} = req.query
-    try{
-        res.status(200).send("Estoy en id")
-    } catch (error) {
-        res.status(404).json({error: error.message})
-    }
-}
-)
-
-router.post("/activities", (req,res)=>{
-    const {} = req.body
-    try{
-        res.status(200).send("Estoy en activities")
-    } catch (error) {
-        res.status(404).json({error: error.message})
-    }
-}
-)
+router.use("/countries", countriesRouter)
+router.use("/activities", activitiesRouter)
 
 
 module.exports = router;

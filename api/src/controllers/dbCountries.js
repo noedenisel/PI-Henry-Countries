@@ -6,7 +6,7 @@ const apiCountries = async () => {
         const apiDB = await Country.findAll()
         if (apiDB.length) return apiDB
 
-        const apiInformation = await axios.get("https://restcontries.com/v3/all")
+        const apiInformation = await axios.get("https://restcountries.com/v3/all")
         const allCountries = await apiInformation.data.map(country => ({
             id: country.cca3,
             name: country.name.common,
