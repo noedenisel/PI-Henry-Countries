@@ -4,11 +4,11 @@ const axios = require ("axios")
 const apiCountries = async () => {
     try { 
         const apiDB = await Country.findAll()
-        if (apiDB.length) return apiDB
+        if (apiDB.length) return apiDB //? di tengo algo, no hago nada
 
-        const apiInformation = await axios.get("https://restcountries.com/v3/all")
-        const allCountries = await apiInformation.data.map(country => ({
-            id: country.cca3,
+        const apiInformation = await axios.get("https://restcountries.com/v3/all") // ? solicita los datos a la api externa
+        const allCountries = await apiInformation.data.map(country => ({ //? trae los datos unificando el formato
+            id: country.cca3, 
             name: country.name.common,
             flag: country.flag[0],
             capital: country.capital ? country.capital[0] : "Este paìs no tiene una capital",
@@ -18,7 +18,7 @@ const apiCountries = async () => {
             population: country.population || null
         }))
 
-        apiInformation = await Country.bulkCreate(allCountries)
+        apiInformation = await Country.bulkCreate(allCountries) //? guardo los datos con el formato unificado en mi db
         return apiInformation
     } catch (error) {
         throw new Error (error.message)

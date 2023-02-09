@@ -1,19 +1,15 @@
 const { Router } = require('express');
 const { Country } = require ("../db");
 const { apiCountries } = require('../controllers/dbCountries');
+const { getCountriesHandler, getCountryHandler} = require ("../handlers/countriesHandlers")
+
 
 const countriesRouter = Router();
 
-countriesRouter.get("/", async (req,res)=>{
-   
-    res.send("NIY: Mostrando los paises por nombre")
-   
-})
 
+countriesRouter.get("/countries",  getCountriesHandler)
 
-countriesRouter.get("/:id", async (req,res)=>{
-    res.send("NIY: Mostrando los paises por ID")
-}
-)
+countriesRouter.get("/countries/:id", getCountryHandler )
+
 
 module.exports = countriesRouter
