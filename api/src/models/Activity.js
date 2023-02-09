@@ -16,7 +16,11 @@ module.exports = (sequelize) => {
     },
     difficulty: {
         type: DataTypes.ENUM("1", "2", "3", "4", "5")
-    },
+    }, 
+    //TODO: hacerlo como INTERGER y validar que sea de 1 a 5
+    //allowNull: false
+    //validate{ min 1, max 5}
+    
     duration: {
         type: DataTypes.STRING, 
     },

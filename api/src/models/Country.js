@@ -8,19 +8,22 @@ module.exports = (sequelize) => {
       allowNull: false,
       type: DataTypes.STRING, 
       primaryKey: true,
-
   }, 
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+    },
+    capital: {
+      type: DataTypes.STRING,
+      //allowNull: false //TODO agregarlo despues para que no se caiga la db
+      //! ojo que hay algunos que no traen capital... hacer con ternario si tiene y sino msj de error
     },
     flag : {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+
     }, 
-    continents: {
+    continent: {
       type: DataTypes.STRING,
       allowNull: false
     },
