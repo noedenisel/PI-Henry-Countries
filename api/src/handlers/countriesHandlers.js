@@ -1,4 +1,7 @@
 const { apiCountries } = require ("../controllers/dbCountries")
+const { getCountryById  } = require ("../controllers/countriesController")
+
+
 
 const getCountriesHandler = (req, res) => {
     const { name } = req.query
@@ -15,9 +18,19 @@ const getCountriesHandler = (req, res) => {
 
 
 
-const getCountryHandler = (req, res) => {
+const getCountryHandler = async (req, res) => {
     const { id } = req.params
-    res.send(`detalle del pais del ID ${id}`)
+    // if (typeof String(id) == "string") console.log("es un string");
+    try{
+        const countryId = await getCountryById(id)
+        if(countryId) return res.status(200).json (countryId)
+        else return res.status(400).json(`No hay paises con el Id: ${id}`)
+        // res.status(200).json("ok")
+     
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+      
 }
 
 
