@@ -1,11 +1,12 @@
 const { apiCountries } = require ("../controllers/dbCountries")
 const { getCountryById  } = require ("../controllers/countriesController")
+const { dbCountries } = require ("../controllers/dbCountries")
 
 
 
 const getCountriesHandler = (req, res) => {
     const { name } = req.query
-    
+
     //? llama a la funcion que obtiene los datos de la db
     apiCountries() //!ojo cuando hago el get tira error en consola
     
@@ -21,6 +22,9 @@ const getCountriesHandler = (req, res) => {
 const getCountryHandler = async (req, res) => {
     const { id } = req.params
     // if (typeof String(id) == "string") console.log("es un string");
+
+
+    
     try{
         const countryId = await getCountryById(id)
         if(countryId) return res.status(200).json (countryId)

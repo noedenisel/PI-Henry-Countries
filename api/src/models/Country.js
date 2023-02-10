@@ -37,5 +37,7 @@ module.exports = (sequelize) => {
     population: {
       type: DataTypes.FLOAT
     }
-  });
+  }, 
+    {timestamp: false}
+  );
 };

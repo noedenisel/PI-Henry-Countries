@@ -1,8 +1,8 @@
 const {  Country } = require ("../db")
 const { dbCountries } = require("../controllers/dbCountries")
 
-const getCountryById = async (id) => {
-    const countryId = await dbCountries.findByPk(id)
+const getCountryById =  async (id) => {
+    const countryId = await Country.findByPk(id)
     return countryId
 
 }
