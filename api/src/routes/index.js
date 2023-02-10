@@ -19,8 +19,6 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 const { Router } = require('express');
-const { Country } = require ("../db");
-const { apiCountries } = require('../controllers/dbCountries');
 const countriesRouter = require ("./countriesRouter")
 const activitiesRouter = require ("./activitiesRouter")
 

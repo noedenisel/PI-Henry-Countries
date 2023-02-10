@@ -1,10 +1,26 @@
-const {  Country } = require ("../db")
-const { dbCountries } = require("../controllers/dbCountries")
+const {  Country, Activity } = require ("../db")
 
-const getCountryById =  async (id) => {
-    const countryId = await Country.findByPk(id)
+const getAllCountries = async () => {
+    const country = await Country.findAll()
+    return country
+
+}
+
+const searchCountryByName = (name) => {
+
+
+}
+
+
+
+const getCountryById = async (id) => {
+    const countryId = await Country.findByPk(id, {
+        includes: {
+            model: Activity
+        }
+    })
     return countryId
 
 }
 
-module.exports = { getCountryById }
+module.exports = { getCountryById , getAllCountries , searchCountryByName }
