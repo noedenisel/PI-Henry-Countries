@@ -1,25 +1,30 @@
 const {  Country, Activity } = require ("../db")
+const { Op } = require("sequelize");
 
 
 
 const getAllCountries = async () => {
-    const countries = await Country.findAll()
+    const countries = await Country.findAll({
+        include: {
+            model: Activity,
+            attributes: ["name"]
+        }
+    })
     return countries
 }
 
-//  const searchCountryByName = async (name) => {
+  const searchCountryByName = async (name) => {
+    const country = await Country.findAll({
+        where: {
+            name:{
+                [Op.iLike]: `%${name}%`
+            }
+        },
+        include: Activity 
+    }) 
+    return country
  
-//     if (name) {
-//       const country = await Country.findOne({
-//         where: {
-//           name: {
-//             [Sequelize.Op.iLike]: `%${name}%`
-//           }
-//         }
-//       }) 
-//       return country
-//     } 
- //}
+}
 
 
 
@@ -32,7 +37,7 @@ const getCountryById = async (id) => {
     return countryId
 }
 
-module.exports = { getCountryById , 
-  getAllCountries , 
+module.exports = { getCountryById , searchCountryByName, getAllCountries
+  
 
 }
