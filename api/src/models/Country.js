@@ -4,9 +4,9 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('country', {
-    id: {   
-      type: DataTypes.STRING(3),   
+    id: {      
       allowNull: false,
+      type: DataTypes.STRING, 
       primaryKey: true,
   }, 
     name: {
@@ -15,7 +15,8 @@ module.exports = (sequelize) => {
     },
     capital: {
       type: DataTypes.STRING,
-      allowNull: false
+      //allowNull: false //TODO agregarlo despues para que no se caiga la db
+      //! ojo que hay algunos que no traen capital... hacer con ternario si tiene y sino msj de error
     },
     flag : {
       type: DataTypes.STRING,
@@ -37,6 +38,6 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT
     }
   }, 
-    {timestamps:false}
+    {timestamps: false}
   );
 };

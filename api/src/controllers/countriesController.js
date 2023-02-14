@@ -9,7 +9,7 @@ const getAllCountries = async () => {
         include: {
             model: Activity,
             as: 'activities',
-            attributes: ["name"]
+            attributes: ["name", "difficulty", "duration", "season"]
         }
     }
     )
@@ -26,7 +26,7 @@ const searchCountryByName = async (name) => {
         include: {
             model: Activity,
             as: 'activities',
-            attributes: ["name"]
+            attributes: ["name", "difficulty", "duration", "season"]
         }
     },
     );
@@ -40,7 +40,7 @@ const getCountryById = async (id) => {
         include: {
             model: Activity,
             as: 'activities',
-            attributes: ["name"]
+            attributes: ["name", "difficulty", "duration", "season"]
         }
     
     })
