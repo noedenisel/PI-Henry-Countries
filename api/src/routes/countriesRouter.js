@@ -7,7 +7,6 @@ const countriesRouter = Router();
 
 
 countriesRouter.get("/",  getCountriesHandler)
-
 countriesRouter.get("/:id", getCountryHandler )
 
 

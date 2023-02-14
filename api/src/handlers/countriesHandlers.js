@@ -3,8 +3,6 @@ const { getCountryById , getAllCountries, searchCountryByName  } = require ("../
 const Country = require("../models/Country")
 
 
-
-
 const getCountriesHandler = async (req, res) => { 
     apiCountries()
     const { name } = req.query
