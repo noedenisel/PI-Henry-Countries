@@ -7,6 +7,7 @@ const createActivity = async (name, difficulty, duration, season, countryId ) =>
             difficulty, 
             duration, 
             season, 
+            countryId
             
         }
     )
