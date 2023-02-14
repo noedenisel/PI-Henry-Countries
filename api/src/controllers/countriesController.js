@@ -35,14 +35,14 @@ const searchCountryByName = async (name) => {
 }
     
     
-
-
-
 const getCountryById = async (id) => {
     const countryId = await Country.findByPk(id, {
-        includes: {
-            model: Activity
+        include: {
+            model: Activity,
+            as: 'activities',
+            attributes: ["name"]
         }
+    
     })
     return countryId
 }
