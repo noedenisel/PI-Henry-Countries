@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    width: auto;
+  height: auto;
+  background-image: url("./img/countries.png");
+  background-size: cover;
+
 }
 
 code {
