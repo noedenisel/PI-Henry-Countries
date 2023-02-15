@@ -38,7 +38,4 @@ const getCountryHandler = async (req, res) => {
 }
 
 
-module.exports = {
-    getCountriesHandler,
-    getCountryHandler
-}
+module.exports = { getCountriesHandler, getCountryHandler}
