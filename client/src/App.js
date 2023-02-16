@@ -1,12 +1,22 @@
 import './App.css';
+import Landing from './views/Landing/Landing';
+import Home from './views/Home/Home';
+import Form from './views/Form/Form';
+import Detail from './views/Detail/Detail';
+import { Route, Routes } from 'react-router-dom';
+
+
 
 function App() {
   return (
     <div className="App" >
-      <h1>PI Henry Countries</h1>
-      <h3>By Noelia Lombardo</h3>
-      <button className='button'>Ingresar</button>  {/* //TODO: Linkear el botton a la pagina principal 
-                                  //TODO darle estilos al btn*/}
+    <Routes>
+      <Route exact path="/" element= {<Landing></Landing>} ></Route>
+      <Route path="/home" element= {<Home></Home>} ></Route>
+      <Route path="/create" element= {<Form></Form>} ></Route>
+      <Route path="/:id" element= {<Detail></Detail>} ></Route>
+    </Routes>
+ 
     </div>
   );
 }
