@@ -1,0 +1,15 @@
+.NavBar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    border: 5px solid red; 
+
+
+}
+
+
+/* background-color: #3F979B ; */    
+

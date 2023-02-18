@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-content: center;
   width: 100%;
   height: 100%;
   background-image: url("../../img/countries.png");
@@ -14,9 +15,10 @@ h1 {/* TODO: PONER SHADOW al BACKGROUND  */
     background: #fffc00;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #F9F54B, #f9f8a4);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #F9F54B,#f9f8a4 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-style: 1px solid red;    /* !No renderiza el borde */
+    border: 3px solid rgba(0, 0, 0, 0.635);   
     border-radius: 1rem;
     width:35%;
+
 }
     
   
@@ -34,8 +36,6 @@ h1 {/* TODO: PONER SHADOW al BACKGROUND  */
   button {
     background: #3F979B;
     padding: 10px 2rem;
-    outline: 2.5px solid #8BF5FA;
-    outline-offset: 3px;
     border: 0;
     color: black;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -48,9 +48,7 @@ h1 {/* TODO: PONER SHADOW al BACKGROUND  */
   button:hover {
     outline-offset: 4.5px;
     background: #FFED00;
-    outline: 2.5px solid #FFED00;
-    outline-offset: 3px;
-  }
+ }
 
   .footer{
     position: absolute;
