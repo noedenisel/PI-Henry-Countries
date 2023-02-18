@@ -20,10 +20,6 @@ const NavBar = ({onSearch}) => {
             { location.pathname === "/home" &&
                 <button><Link to = "/all"> Todos los paises </Link> </button>
             } 
-        
-            { location.pathname === "/home" &&
-                <button><Link to = "/create"> Crear Actividad Turistica </Link> </button>
-            }
 
             {/**Links en Todos los paises  */}
 
@@ -43,8 +39,8 @@ const NavBar = ({onSearch}) => {
 
             { location.pathname === "/create" &&
                 <button><Link to = "/all"> Todos los paises </Link> </button>
-            } 
-    
+            }
+        
         </div>
     )
 }

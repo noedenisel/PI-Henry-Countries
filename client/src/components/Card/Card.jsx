@@ -15,7 +15,7 @@ const Card = (props) => {
             <div className={styles.content}>
                 <p>Continent: {props.continent}</p>
                  <button>
-                 <Link to= {`/detail/${props.id}`}>
+                 <Link to= {`/home/${props.id}`}>
                     Mas info
                  </Link>
                  </button> {/* //TODO: ponerle el link y estilos */}

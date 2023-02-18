@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"
+
 // import styles from './Detail.module.css'
 
 const Detail = (props) => {
@@ -7,7 +8,7 @@ const Detail = (props) => {
 
     const { id } = useParams ();
     const [ country, setCountry] = useState({
-        image: "",
+        flag: "",
         name: "",
         countryCode: "",
         continent: "",
@@ -36,21 +37,26 @@ useEffect(() => {
     const navigate = useNavigate();
     return (
         <div >
-   
+            <img src= {country.flag} alt="" ></img>
             <h1> {country.name }</h1>
-            <h2> {country.countryCode }</h2>
+            <h2> {country.id}</h2>
             <h2>  {country.capital }</h2>
             
             <h2> {country.continent }</h2>
-            <h2> {country.subregion }</h2>
-            <h2> {country.population }</h2>
-            <h2> {country.touristActivities }</h2>
-            <img src={country.image}></img>
+            <h3> {country.subregion }</h3>
+            <h3> Población: {country.population }</h3>
+            <h2> Actividades turísticas: {country.touristActivities }</h2>
+            
 
+
+            <div>
+                <button onClick={()=> navigate("/create")}>Crear actividad turistica</button>
+            </div>
+            <br></br>
             <div>
                 <button onClick={()=> navigate("/home")}>Regresar a la página principal</button>
             </div>
-    
+        
     
         </div>
     )

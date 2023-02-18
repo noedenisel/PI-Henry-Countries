@@ -11,8 +11,8 @@ import {
 
 const initialState = {
 	countries : [],
-	// countryDetail: [],
 	activities: [],
+
 }
 
 export default function rootReducer (state = initialState, action)  {
@@ -34,29 +34,26 @@ export default function rootReducer (state = initialState, action)  {
 		// 		...state
 		// 	}
 
-		case ORDER_BY_NAME: 
-			const orderByName = state.allCountries
-				if (action.payload === "Ascendente") {
-					orderByName.sort((a,b) => a.name - b.name)
-				} else {
-					orderByName.sort((a,b)=> b.name - a.name)
-				}
-
-			return {
-				...state, 
-				countries: orderByName
-			}
+		case ORDER_BY_NAME:
+            const sorted = state.countries
+            const isAscending = action.payload === "Ascendente";
+            const sortedCountries = sorted.sort((a, b) =>
+                isAscending ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
+            );
+            return {
+                ...state,
+                countries: sortedCountries
+            }
 
 		case FILTER_BY_CONTINENT: 
-			const countriesByContinent = state.allCountries
-			const filterByContinent = action.payload !== "All"
-				? countriesByContinent.filter(country => country.continents.includes(action.payload))
-				: countriesByContinent
-			
-				return {
-					...state, 
-					countries: filterByContinent}
-		
+		const Countries = 
+			action.payload === "All"
+			? state.countries
+			: state.countries.filter(countries => countries.continent === action.payload);
+		return {
+			...state,
+			countries: Countries
+		}
 		
 		case ORDER_BY_POPULATION: 
 			const orderByPopulation = state.allCountries
