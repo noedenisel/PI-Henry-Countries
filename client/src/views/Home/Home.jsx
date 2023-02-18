@@ -1,17 +1,39 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import Cards from "../../components/Cards/Cards";
+import syles from "./AllCountries.module.css"
+import CardContainer from "../../components/CardContainer/CardContainer"
+import { useEffect , useSelector} from "react"
+import { useDispatch } from "react-redux"
+import {
+    getAllCountries,
+    // getCountryByName,
+    // getCountryById,    
+	// getActivities,
+	// postActivity,    
+	// filterByContinent,
+    // filterByActivity,
+    // filterByName,
+    // filterByPopulation,
+} from "../../redux/actions/actions"
 
-const Home = () => {
-  const countries = useSelector((state) => state.countries)
-  const searchName = useSelector((state) => state.searchName)
-//? para obtener el estado de búsqueda del store de Redux
 
-  return (
-    <div>
-      {searchName === '' && <Cards countries={countries} />} 
-    </div>
-  );
+const AllCountries = () => {
+    
+
+    const dispatch = useDispatch()
+    const countries = useSelector(state => state.countries)
+
+    useEffect(() => {
+        if (!countries.length) {
+            dispatch(getAllCountries());
+        }
+    }, [dispatch, countries.length]);
+
+    
+
+    return (
+        <div className={syles.containerAl}>
+            <CardContainer></CardContainer>
+        </div>
+    )
 }
 
-export default Home;
+export default AllCountries

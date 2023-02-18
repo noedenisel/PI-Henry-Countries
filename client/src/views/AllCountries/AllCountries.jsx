@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Cards from "../../components/Cards/Cards"
 import { getAllCountries } from "../../redux/actions/actions";
 
-const AllCountries = () => {
+const AllCountries = ({onClose}) => {
   const dispatch = useDispatch();
   const countries = useSelector(state => state.countries);
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,8 +28,8 @@ const AllCountries = () => {
   return (
     <div>
 
-    Estoy en All Countries
-        {/* <Cards countries={currentCountries} />
+
+   <Cards countries={currentCountries} onClose={onClose} />
         <div>
             {currentPage > 1 &&
                 <button onClick={() => setCurrentPage(currentPage - 1)}>Prev</button>
@@ -42,7 +42,7 @@ const AllCountries = () => {
             {currentPage < totalPages &&
                 <button onClick={() => setCurrentPage(currentPage + 1)}>Next</button>
             }
-        </div> */}
+        </div> 
     </div>
   );
 };

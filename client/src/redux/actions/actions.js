@@ -2,8 +2,6 @@ import  axios from "axios"
 
 import {
     GET_ALL_COUNTRIES,
-    GET_COUNTRY_BY_NAME,
-    GET_COUNTRY_BY_ID,
     FILTER_BY_CONTINENT,
     FILTER_BY_ACTIVITY,
     ORDER_BY_NAME,
@@ -24,30 +22,15 @@ export const getAllCountries = () => {
     }
 }
 
-export const getCountryByName = (name) => {
-    return async function(dispatch) {
-        const dbData = await axios.get(
-            `http://localhost:3001/countries?name=${name}`
-            )
-        const countryByName = dbData.data
-        dispatch({type: GET_COUNTRY_BY_NAME, payload: countryByName})
-    }
-}
-
-export const setSearchName = (name) => {
-    return { type: 'SET_SEARCH_NAME',payload: name,};
-  } //? creando una acción que actualice el estado de búsqueda. Toma el nombre del país como parámetro
-  
-
-export const getCountryById = (id) => {
-    return async function(dispatch) {
-        const dbData = await axios.get(
-            `http://localhost:3001/countries/${id}`
-            )
-        const countryById = dbData.data
-        dispatch({type: GET_COUNTRY_BY_ID, payload: countryById})
-    }
-}
+// export const getCountryById = (id) => {
+//     return async function(dispatch) {
+//         const dbData = await axios.get(
+//             `http://localhost:3001/countries/${id}`
+//             )
+//         const countryById = dbData.data
+//         dispatch({type: GET_COUNTRY_BY_ID, payload: countryById})
+//     }
+// }
 
 export const filterByContinent = (payload) => {
     return {type: FILTER_BY_CONTINENT, payload: payload}
@@ -66,15 +49,15 @@ export const orderByPopulation = (order) => {
 }
 
 
-export const getActivities = () => {
-    return async function(dispatch) {
-        const dbData = await axios.get(
-            `http://localhost:3001/activities`
-            )
-        const getActivities = dbData.data
-        dispatch({type: GET_ACTIVITIES, payload: getActivities})
-    }
-}
+// export const getActivities = () => {
+//     return async function(dispatch) {
+//         const dbData = await axios.get(
+//             `http://localhost:3001/activities`
+//             )
+//         const getActivities = dbData.data
+//         dispatch({type: GET_ACTIVITIES, payload: getActivities})
+//     }
+// }
 
 export function postActivity(payload)  {
     return async function() {

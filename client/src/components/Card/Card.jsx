@@ -3,6 +3,8 @@ import styles from "./Card.module.css"
 const Card = (props) => {
     return (
         <div className={styles.card}>
+            <button onClick={props.onClose} className={styles.button}>X</button> {/* //TODO: ponercondicional para que si se muestra en la ruta all no me muestre el boton de cerrar */}
+
             <div className={styles.icon}>
                 <img src= {props.img} alt="" className={styles.img}></img>
             </div>
@@ -13,7 +15,6 @@ const Card = (props) => {
                 <p>Continent: {props.continent}</p>
                  <button>Mas info</button> {/* //TODO: ponerle el link y estilos */}
             </div>
-           
         </div>
     )
 }

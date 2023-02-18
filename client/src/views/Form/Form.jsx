@@ -57,8 +57,7 @@ export default function Form(props) {
     return (
         <div className={styles.formContainer}>
 
-        Estoy en el form
-            {/* <form onSubmit={submitForm}>
+            <form onSubmit={submitForm}>
                 <div>
                     <label> Nombre: </label>
                     <input type="text" value={form.name} onChange={handleInputChange} name="name"></input>
@@ -104,7 +103,7 @@ export default function Form(props) {
 
             <br></br>
             
-            <button className="buttonForm" type="submit">Crear actividad</button> */}
+            <button className="buttonForm" type="submit">Crear actividad</button>
         </div>
     )
 }

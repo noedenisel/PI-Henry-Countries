@@ -9,45 +9,42 @@ const NavBar = ({onSearch}) => {
     return (
         <div className={styles.NavBar}>
 
-        {/** SearchBar */}
+            {/** SearchBar */}
 
-        {(location.pathname === "/home" || location.pathname === "/all") &&
-            <SearchBar  onSearch={onSearch}></SearchBar>
-        }
+            {location.pathname === "/home"  &&
+                <SearchBar  onSearch={onSearch}></SearchBar>
+            }
 
-        {/**Links en Home */}
+            {/**Links en Home */}
         
-        { location.pathname === "/home" &&
-            <button><Link to = "/all"> Todos los paises </Link> </button>
-        }
+            { location.pathname === "/home" &&
+                <button><Link to = "/all"> Todos los paises </Link> </button>
+            } 
         
-        { location.pathname === "/home" &&
-            <button><Link to = "/create"> Crear Actividad Turistica </Link> </button>
-        }
+            { location.pathname === "/home" &&
+                <button><Link to = "/create"> Crear Actividad Turistica </Link> </button>
+            }
 
-      
+            {/**Links en Todos los paises  */}
 
-        {/**Links en Todos los paises  */}
+            { location.pathname === "/all" &&
+                <button><Link to = "/home"> Pagina principal </Link> </button>
+            }
 
-        { location.pathname === "/all" &&
-            <button><Link to = "/home"> Pagina principal </Link> </button>
-        }
+            { location.pathname === "/all" &&
+                <button><Link to = "/create"> Crear Actividad Turistica </Link> </button>
+            } 
 
-        { location.pathname === "/all" &&
-            <button><Link to = "/create"> Crear Actividad Turistica </Link> </button>
-        }
-
-        {/**Links en Crear Actividad */}
+            {/**Links en Crear Actividad */}
         
-        { location.pathname === "/create" &&
-            <button><Link to = "/all"> Todos los paises </Link> </button>
-        }
-        
-        { location.pathname === "/create" &&
-            <button><Link to = "/home"> Pagina principal </Link> </button>
-        }
+            { location.pathname === "/create" &&
+                <button><Link to = "/home"> Pagina principal </Link> </button>
+            }
 
-       
+            { location.pathname === "/create" &&
+                <button><Link to = "/all"> Todos los paises </Link> </button>
+            } 
+    
         </div>
     )
 }
