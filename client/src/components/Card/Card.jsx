@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styles from "./Card.module.css"
 
 const Card = (props) => {
@@ -13,7 +14,11 @@ const Card = (props) => {
 
             <div className={styles.content}>
                 <p>Continent: {props.continent}</p>
-                 <button>Mas info</button> {/* //TODO: ponerle el link y estilos */}
+                 <button>
+                 <Link to= {`/detail/${props.id}`}>
+                    Mas info
+                 </Link>
+                 </button> {/* //TODO: ponerle el link y estilos */}
             </div>
         </div>
     )
