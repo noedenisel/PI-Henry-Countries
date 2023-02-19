@@ -4,18 +4,11 @@ import { useEffect , useSelector} from "react"
 import { useDispatch } from "react-redux"
 import {
     getAllCountries,
-    // getCountryByName,
-    // getCountryById,    
-	// getActivities,
-	// postActivity,    
-	// filterByContinent,
-    // filterByActivity,
-    // filterByName,
-    // filterByPopulation,
+
 } from "../../redux/actions/actions"
 
 
-const AllCountries = () => {
+const Home = () => {
     
 
     const dispatch = useDispatch()
@@ -36,4 +29,4 @@ const AllCountries = () => {
     )
 }
 
-export default AllCountries
+export default Home

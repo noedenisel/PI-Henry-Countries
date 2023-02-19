@@ -2,9 +2,14 @@ import { Link } from "react-router-dom"
 import styles from "./Card.module.css"
 
 const Card = (props) => {
+
+
     return (
         <div className={styles.card}>
-            <button onClick={props.onClose} className={styles.button}>X</button> {/* //TODO: ponercondicional para que si se muestra en la ruta all no me muestre el boton de cerrar */}
+
+
+            <button onClick={props.onClose} className={styles.button}>X</button> 
+            
 
             <div className={styles.icon}>
                 <img src= {props.img} alt="" className={styles.img}></img>
