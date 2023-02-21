@@ -19,9 +19,22 @@ const createActivity = async (name, difficulty, duration, season, countryIds) =>
     await newActivity[0].addCountries(countries); //? en lugar de pasar un solo ID de país a addCountry, paso el array de objetos countries devuelto por findAll a addCountries
 
     return newActivity;
-};
+}
 
-module.exports = { createActivity };
+const getAtivities = async () => {
+    const activities = await Activity.findAll(
+        {
+        include: {
+            model: Country,
+            as: 'countries',
+            attributes: ["name", "capital", "flga", "continent", "subregion", "area", "population"]
+        }
+    }
+    )
+    return countries
+}
+
+module.exports = { createActivity , getAtivities};
 
 
 

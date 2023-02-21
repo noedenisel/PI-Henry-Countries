@@ -1,8 +1,8 @@
 import {
     GET_ALL_COUNTRIES,
     // GET_COUNTRY_BY_ID,
-	// GET_ACTIVITIES,
-	// POST_ACTIVITY,    
+GET_ACTIVITIES,
+	POST_ACTIVITY,    
 	FILTER_BY_CONTINENT,
     // FILTER_BY_ACTIVITY,
     ORDER_BY_NAME,
@@ -26,13 +26,13 @@ export default function rootReducer (state = initialState, action)  {
 		// case GET_COUNTRY_BY_ID: 
 		// 	return {...state, countryDetail: action.payload}
 
-		// case GET_ACTIVITIES: 
-		// 	return {...state, activities: action.payload}
+		case GET_ACTIVITIES: 
+			return {...state, activities: action.payload}
         
-		// case POST_ACTIVITY: 
-		// 	return {
-		// 		...state
-		// 	}
+		case POST_ACTIVITY: 
+			return {
+				...state
+			}
 
 		case ORDER_BY_NAME:
             const sorted = state.countries

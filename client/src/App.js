@@ -1,22 +1,18 @@
-import './App.css';
+import './App.css'
 
 //? React
 import React, {useState} from "react"
 import { Route, Routes , useLocation} from "react-router-dom"
 
 //? componentes
-import NavBar from './components/Navbar/Navbar';
-import Cards from './components/Cards/Cards';
+import NavBar from './components/Navbar/Navbar'
+import Cards from './components/Cards/Cards'
 
 //? views
-import Landing from './views/Landing/Landing';
-import Form from './views/Form/Form';
-import Detail from './views/Detail/Detail';
+import Landing from './views/Landing/Landing'
+import Form from './views/Form/Form'
+import Detail from './views/Detail/Detail'
 import AllCountries from "./views/AllCountries/AllCountries"
-
-
-
-
 
 
 function App() {
@@ -32,9 +28,9 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
-          setCountries((oldCountries) => [...oldCountries, data[0]]);
+          setCountries((oldCountries) => [...oldCountries, data[0]])
         } else {
-          window.alert('No se encontraron resultados para el país ingresado.');
+          window.alert('No se encontraron resultados para el país ingresado.')
         }
       });
   }
@@ -65,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.h1 {/* TODO: PONER SHADOW al BACKGROUND  */
+.titleLanding {/* TODO: PONER SHADOW al BACKGROUND  */
     color: black;
     background: #fffc00;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #F9F54B, #f9f8a4);  /* Chrome 10-25, Safari 5.1-6 */

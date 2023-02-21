@@ -32,8 +32,6 @@ const Cards = ({ countries, onClose }) => {
         /> 
         
       ))}
-
-  
     </div>
   );
 };

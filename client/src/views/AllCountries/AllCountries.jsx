@@ -1,32 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Cards from "../../components/Cards/Cards"
-import {  getAllCountries, orderByName, orderByPopulation, filterByContinent } from "../../redux/actions/actions";
+import {  getAllCountries, orderByName, orderByPopulation, filterByContinent } from "../../redux/actions/actions"
 
 const AllCountries = ({onClose}) => {
-    const dispatch = useDispatch();
-    const countries = useSelector(state => state.countries);
-  
-    const [currentPage, setCurrentPage] = useState(1);
-    const [order, setOrder] = useState('');
-    const countriesPerPage = 10;
-    const pagesToShow = 5;
-  
-    useEffect(() => {
-      if (!countries.length) {
-          dispatch(getAllCountries())
+    const dispatch = useDispatch() 
+    const countries = useSelector(state => state.countries) //? obtengo el estado actual de la lista de países del store
+
+    useEffect(() => { //? despues de montar el componente
+      if (!countries.length) { //? verifico si el array de countries esta vacio
+          dispatch(getAllCountries()) //? me traigo todos los paises
       }
-    }, [dispatch, countries.length]);
+    }, [dispatch, countries.length])
   
-    const indexOfLastCountry = currentPage * countriesPerPage;
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
-    const totalPages = Math.ceil(countries.length / countriesPerPage);
-    const maxPages = Math.min(currentPage + Math.floor(pagesToShow/2), totalPages);
-    const minPages = Math.max(currentPage - Math.floor(pagesToShow/2), 1);
-    const pages = [...Array(maxPages - minPages + 1).keys()].map(i => minPages + i);
+    //? paginacion
+    
+    const [currentPage, setCurrentPage] = useState(1)
+    const [order, setOrder] = useState('')
+
+    const countriesPerPage = 10 //? cantidad de paises por pagina
+    const pagesToShow = 5 //? cantidad de nros de paginas que quiero mostrar (para que no sea una cantidad de nros interminables)
   
+    const indexOfLastCountry = currentPage * countriesPerPage //? calcul0 el índice del último país que debe aparecer en la página actual. Para la primera página, este valor es "10" 
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage //?calculo el índice del primer país que debe aparecer en la página actual. Para la primera página, este valor es "0" 
+    const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry) //? creo un nuevo array "currentCountries" que contiene los países que deben mostrarse en la página actual. La función "slice" se utiliza para obtener una porción de la matriz "countries" que contiene los países correspondientes a los índices "indexOfFirstCountry" y "indexOfLastCountry".
+    const totalPages = Math.ceil(countries.length / countriesPerPage) //? calculo el número total de páginas que hay en la lista de países redondeando para arriba para que se muestren todas las paginas que necesito
+    const maxPages = Math.min(currentPage + Math.floor(pagesToShow/2), totalPages) //? calculo el número máximo de páginas que se deben mostrar en la paginación
+    const minPages = Math.max(currentPage - Math.floor(pagesToShow/2), 1)
+    const pages = [...Array(maxPages - minPages + 1).keys()].map(i => minPages + i) //? creo un array de números para la paginación. Con "[...Array(maxPages - minPages + 1).keys()]" creo un array de nros que comienza en 0 y termina en el número de páginas que se deben mostrar. Con el map ajusto los valores en la matriz para que comiencen en "minPages" en lugar de cero. 
+
+    
+    //? manejo de los eventos de AllCountries
     function handleFilterByContinent(event){
       dispatch(filterByContinent(event.target.value))
     }
@@ -89,7 +94,7 @@ const AllCountries = ({onClose}) => {
             }
         </div> 
     </div>
-  );
-};
+  )
+}
 
 export default AllCountries;
