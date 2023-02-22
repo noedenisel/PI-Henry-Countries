@@ -9,14 +9,14 @@ export default function SearchBar({onSearch}) {
    }
 
    return (
-      <div> 
+      <div className={styles.searchContainer}> 
         <input 
          type='text' 
          name="search" 
          placeholder="Buscar Pais"
          onChange={changeHandler}/>
       
-        <button onClick={()=> onSearch(searchCountry)} className={styles.buttonAgregar}>Buscar</button> 
+        <button onClick={()=> onSearch(searchCountry)} className={styles.buttonBuscar}>Buscar</button> 
       
       </div>
    );

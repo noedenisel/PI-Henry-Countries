@@ -4,12 +4,25 @@
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
-    justify-content: space-between;
-    border: 5px solid red; 
+    justify-content: space-around;
+    background-color: #205e61f7;
+    width: 100%;
+    height: 10%;
 
+    position: fixed; /* o absolute */
+    left: 0;
+}
+
+.NavBar a { 
+    text-decoration:none;
+    width: 100%; /* ancho del 100% para extenderse por toda la NavBar */
 
 }
 
+.container {
+    width: 100%; /* ancho del 100% para que la NavBar pueda ocupar todo el ancho disponible */
+    margin: 0;
+    padding: 0;
 
-/* background-color: #3F979B ; */    
+}
 

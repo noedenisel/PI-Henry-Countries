@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import Cards from "../../components/Cards/Cards"
 import {  getAllCountries, orderByName, orderByPopulation, filterByContinent } from "../../redux/actions/actions"
 
+import styles from './AllCountries.module.css'
+
 const AllCountries = ({onClose}) => {
     const dispatch = useDispatch() 
     const countries = useSelector(state => state.countries) //? obtengo el estado actual de la lista de países del store
@@ -28,10 +30,9 @@ const AllCountries = ({onClose}) => {
     const totalPages = Math.ceil(countries.length / countriesPerPage) //? calculo el número total de páginas que hay en la lista de países redondeando para arriba para que se muestren todas las paginas que necesito
     const maxPages = Math.min(currentPage + Math.floor(pagesToShow/2), totalPages) //? calculo el número máximo de páginas que se deben mostrar en la paginación
     const minPages = Math.max(currentPage - Math.floor(pagesToShow/2), 1)
-    const pages = [...Array(maxPages - minPages + 1).keys()].map(i => minPages + i) //? creo un array de números para la paginación. Con "[...Array(maxPages - minPages + 1).keys()]" creo un array de nros que comienza en 0 y termina en el número de páginas que se deben mostrar. Con el map ajusto los valores en la matriz para que comiencen en "minPages" en lugar de cero. 
+    const pages = [...Array(maxPages - minPages + 1).keys()].map(i => minPages + i) //? creo un array de números para la paginación. Con "[...Array(maxPages - minPages + 1).keys()]" creo un array de nros que comienza en 0 y termina en el número de páginas que se deben mostrar. Con el map los valores en la matriz para que comiencen en "minPages" en lugar de cero. Esto significa que si "minPages" es "3" y "maxPages" es "7", entonces "pages" sería una matriz de [3, 4, 5, 6, 7].
 
-    
-    //? manejo de los eventos de AllCountries
+
     function handleFilterByContinent(event){
       dispatch(filterByContinent(event.target.value))
     }
@@ -49,45 +50,64 @@ const AllCountries = ({onClose}) => {
     }
 
   return (
-    <div>
-        Ordenar por nombre: 
-            <select name= "order" id= "" onChange={(event) => handleOrderByName(event)} > 
-                <option value = "" >Select...</option>
-                <option value="All">All</option>
-                <option value = "Ascendente">Ascendente</option>
-                <option value = "Descendente"> Descendente</option>
-            </select>
-        Ordenar por poblacion: 
-            <select name= "order" id= "" onChange={(event) => handleOrderByPopulation(event)} > 
-                <option value = "" >Select...</option>
-                <option value="All">All</option>
-                <option value = "Ascendente">Ascendente</option>
-                <option value = "Descendente"> Descendente</option>
-            </select>
+    <div className= {styles.AllContainer} >
+ 
+        <div className= {styles.filtersContainer}>
+            <div>
+                Ordenar por nombre:  
+                <select name= "order" id= "" onChange={(event) => handleOrderByName(event)} > 
+                    <option value = "" >Select...</option>
+                    <option value="All">All</option>
+                    <option value = "Ascendente">Ascendente</option>
+                    <option value = "Descendente"> Descendente</option>
+                </select>
+            </div>
 
-        Filtrar por continente:
-            <select name = "Continent" id= "" onChange = { handleFilterByContinent } >  {/* //!Tiene un pequeño delay */}
-                <option value = "">Select...</option>
-                <option value="Continents">All</option> 
-                <option value = "South America">Sur America</option>  {/* //TODO: combinar con america del norte */}
-                <option value = "North America">Norte America</option> {/* //TODO: combinar con america del sur */}
-                <option value = "Europe">Europa</option>
-                <option value = "Africa"> Africa</option> 
-                <option value= "Asia">Asia</option> 
-                <option value = "Oceania"> Oceania</option>
-                <option value = "Antarctica"> Antartida</option> 
-            </select>
-   
+            <div>
+                Ordenar por poblacion: 
+                <select name= "order" id= "" onChange={(event) => handleOrderByPopulation(event)} > 
+                    <option value = "" >Select...</option>
+                    <option value="All">All</option>
+                    <option value = "Ascendente">Ascendente</option>
+                    <option value = "Descendente"> Descendente</option>
+                </select>
+            </div>
 
-   <Cards countries={currentCountries} onClose={onClose} />
+            <div>
+                Filtrar por continente:
+                <select name = "Continent" id= "" onChange = { handleFilterByContinent } >  {/* //!Tiene un pequeño delay */}
+                    <option value = "">Select...</option>
+                    <option value="Continents">All</option> 
+                    <option value = "South America">Sur America</option>  {/* //TODO: combinar con america del norte */}
+                    <option value = "North America">Norte America</option> {/* //TODO: combinar con america del sur */}
+                    <option value = "Europe">Europa</option>
+                    <option value = "Africa"> Africa</option> 
+                    <option value= "Asia">Asia</option> 
+                    <option value = "Oceania"> Oceania</option>
+                    <option value = "Antarctica"> Antartida</option> 
+                </select> 
+            </div>
+            
+        </div>
+    
         <div>
+            <Cards countries={currentCountries}  />
+        </div>
+        
+        <div className={styles.pagination}>
             {currentPage > 1 &&
                 <button onClick={() => setCurrentPage(currentPage - 1)}>Prev</button>
             }
             {pages.map((page) => (
-                <button key={page} onClick={() => setCurrentPage(page)} className={currentPage === page ? 'active' : ''}>
-                    {page}
-                </button>
+                <button
+  key={page}
+  onClick={() => setCurrentPage(page)}
+  className={currentPage === page ? 'active' : ''}
+  style={currentPage === page ? { backgroundColor: 'yellow' } : {}}
+>
+  {page}
+</button>
+
             ))}
             {currentPage < totalPages &&
                 <button onClick={() => setCurrentPage(currentPage + 1)}>Next</button>

@@ -1,10 +1,13 @@
 .containerCard {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     align-content: center;
-      /* TODO cuando tenga bien el home, ajustarlo */
+    margin-top: 180px;
+    height: 50%;
+    grid-column: auto auto;
+      /* TODO AJUSTAR QUE SE VEAN 5 Y 5 */
     
   }
