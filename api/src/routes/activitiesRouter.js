@@ -1,9 +1,18 @@
 const { Router } = require('express');
-const server = require('../app');
-const { createActivitiesHandler } = require ("../handlers/activitiesHandlers")
+const { activitiesHandlers, getAllActivities } = require('../handlers/activitiesHandlers');
+
 
 const activitiesRouter = Router();
+const validate = (req, res, next) => {
+    const {name, difficulty, duration, season} = req.body;
+    if (![name, difficulty, duration, season].every(Boolean))
+    return res.status(400).json({error: 'Todos los campos son requeridos'})
 
-activitiesRouter.post("/", createActivitiesHandler)
+    next()
+}
+
+activitiesRouter.post('/', validate, activitiesHandlers);
+activitiesRouter.get('/', getAllActivities)
+
 
 module.exports = activitiesRouter

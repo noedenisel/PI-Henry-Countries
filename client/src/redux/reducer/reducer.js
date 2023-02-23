@@ -1,12 +1,13 @@
 import {
     GET_ALL_COUNTRIES,
-    // GET_COUNTRY_BY_ID,
-GET_ACTIVITIES,
-	POST_ACTIVITY,    
-	FILTER_BY_CONTINENT,
-    // FILTER_BY_ACTIVITY,
     ORDER_BY_NAME,
     ORDER_BY_POPULATION,
+	FILTER_BY_CONTINENT,
+
+	GET_ACTIVITIES,
+    POST_ACTIVITIES,
+	FILTERED_BY_ACTIVITIES,
+
 } from "../actions/types"
 
 const initialState = {
@@ -22,17 +23,6 @@ export default function rootReducer (state = initialState, action)  {
 			return {
 				...state, 
 				countries: action.payload}
-
-		// case GET_COUNTRY_BY_ID: 
-		// 	return {...state, countryDetail: action.payload}
-
-		case GET_ACTIVITIES: 
-			return {...state, activities: action.payload}
-        
-		case POST_ACTIVITY: 
-			return {
-				...state
-			}
 
 		case ORDER_BY_NAME:
             const sorted = state.countries
@@ -67,9 +57,38 @@ export default function rootReducer (state = initialState, action)  {
 			countries: Countries
 		}
 		
-		
-			
-		// case FILTER_BY_ACTIVITY: 
+		case GET_ACTIVITIES:
+            return {
+                ...state,
+                activities: action.payload,
+                allActivities: action.payload
+            };
+
+        case POST_ACTIVITIES:
+            return {
+                ...state,
+            };
+
+		case FILTERED_BY_ACTIVITIES:
+            const allCountries = state.allCountries
+            const filteredbyActivity = action.payload === 'All'
+            ? allCountries : allCountries.filter((c) => {
+                    const activities = c.activities.map((a) => a.name)
+                    return activities.includes(action.payload)
+
+                    });
+            return {
+                ...state,
+                countries: filteredbyActivity
+            };
+
+		default:
+            return {...state}
+    }
+
+}
+
+// case FILTER_BY_ACTIVITY: 
 		// 	const allCountries = state.allCountries
 		// 	const filterByActivity = action.payload === "All"
 		// 	? allCountries : allCountries.filter(countries => {
@@ -77,11 +96,3 @@ export default function rootReducer (state = initialState, action)  {
 		// 		return activity.includes(action.payload)
 		// 	})	
 		// 	return {...state, countries: filterByActivity}
-
-		
-		default:
-            return {...state}
-    }
-
-}
-

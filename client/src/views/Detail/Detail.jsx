@@ -5,8 +5,7 @@ import styles from './Detail.module.css'
 
 const Detail = (props) => {
 
-    const [activities, setActivities] = useState([])
-
+    
     const { id } = useParams ()
     const [ country, setCountry] = useState({
         flag: "",
@@ -27,9 +26,8 @@ const Detail = (props) => {
            .then((country) => {
               if (country.name) {
                  setCountry(country);
-                 setActivities(country.touristActivities);
               } else {
-                 window.alert('No hay personajes con ese ID');
+                 window.alert('No hay actividades con ese ID');
               }
            })
            return setCountry({})
@@ -58,16 +56,7 @@ const Detail = (props) => {
                             <h3> Población: {country.population }</h3>
                         </span> 
                         <h2> Actividades turísticas: </h2>
-                        {/* {activities.length > 0 ? activities.map((activity) => (
-                        <div key={activity.id}>
-                        <h4>Nombre: {activity.name}</h4>
-                        <p>Dificultad: {activity.difficulty}</p>
-                        <p>Duración: {activity.duration} horas</p>
-                        <p>Temporada: {activity.season}</p>
-                        <hr />
-                        </div>
-                        )) : <p>No hay actividades turísticas.</p>}
-                        */}
+         
                     </div>
                 </div> 
             </div>  

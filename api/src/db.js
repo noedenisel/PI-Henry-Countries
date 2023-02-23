@@ -29,7 +29,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // ? --------> Modelos
 
-const { Country, Activity } = sequelize.models;
+const { Country,  Activity } = sequelize.models;
 
 // ? -------> Relaciones 
 
