@@ -1,23 +1,28 @@
-import React, {useState} from 'react'
-import styles from './SearchBar.module.css'
+import React, { useState } from 'react';
+import styles from './SearchBar.module.css';
 
+import lupa from "../../img/lupa.png"
 
-export default function SearchBar({onSearch}) {
-   const [searchCountry, setSearchCharacter] = useState("")
-   const changeHandler = (event) => {
-      setSearchCharacter(event.target.value)
-   }
+export default function SearchBar({ onSearch }) {
+  const [searchCountry, setSearchCountry] = useState('');
 
-   return (
-      <div className={styles.searchContainer}> 
-        <input 
-         type='text' 
-         name="search" 
-         placeholder="Buscar Pais"
-         onChange={changeHandler}/>
+  const changeHandler = (event) => {
+    setSearchCountry(event.target.value);
+  };
+
+  return (
+    <div className={styles.searchContainer}>
+      <input
+        type="text"
+        name="search"
+        placeholder="Buscar País"
+        value={searchCountry}
+        onChange={changeHandler}
+      />
       
-        <button onClick={()=> onSearch(searchCountry)} className={styles.buttonBuscar}>Buscar</button> 
-      
-      </div>
-   );
+      <img src={lupa} alt="Buscar" className={styles.iconNav} onClick={() => onSearch(searchCountry)}/>
+
+    </div>
+  );
 }
+
