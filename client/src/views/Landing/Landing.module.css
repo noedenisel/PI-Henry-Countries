@@ -8,9 +8,12 @@
   background-image: url("../../img/countries.png");
   background-size: cover;
   flex-direction: column;
+
+  
+ 
 }
 
-.titleLanding {/* TODO: PONER SHADOW al BACKGROUND  */
+.titleLanding {
     color: black;
     background: #fffc00;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #F9F54B, #f9f8a4);  /* Chrome 10-25, Safari 5.1-6 */
@@ -43,11 +46,12 @@
     border-radius: 100rem;
     transition: 0.2s;
     font-weight: 600;
-  }
+    cursor: url("../../img/pngegg.png"), pointer; /* !No me lo reconoce */ 
+  } 
   
   button:hover {
     outline-offset: 4.5px;
-    background: #FFED00;
+    background: #FFED00;    
  }
 
   .footer{

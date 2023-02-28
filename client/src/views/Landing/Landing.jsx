@@ -8,7 +8,7 @@ const Landing = () => {
             
             
             <Link to="/home">
-                <button className='button' >Ingresar</button> 
+                <button className='button' >Let's go to tavel</button> 
             </Link>
 
             <footer className={styles.footer}>
