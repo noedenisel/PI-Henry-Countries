@@ -6,7 +6,7 @@ import {  getAllCountries, orderByName, orderByPopulation, filterByContinent, fi
 
 import styles from './AllCountries.module.css'
 
-const AllCountries = ({onClose}) => {
+const AllCountries = () => {
     const dispatch = useDispatch() 
     const countries = useSelector(state => state.countries) //? obtengo el estado actual de la lista de países del store
 
@@ -30,7 +30,7 @@ const AllCountries = ({onClose}) => {
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage //?calculo el índice del primer país que debe aparecer en la página actual. Para la primera página, este valor es "0" 
     
     const currentCountries = countries
-  .filter(country => !selectedSeason || country.activities.some(activity => activity.season === selectedSeason))
+   .filter(country => !selectedSeason || country.activities.some(activity => activity.season === selectedSeason))
   .slice(indexOfFirstCountry, indexOfLastCountry);
 
     
@@ -130,13 +130,13 @@ const AllCountries = ({onClose}) => {
             }
             {pages.map((page) => (
                 <button
-  key={page}
-  onClick={() => setCurrentPage(page)}
-  className={currentPage === page ? 'active' : ''}
-  style={currentPage === page ? { backgroundColor: 'yellow' } : {}}
->
-  {page}
-</button>
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={currentPage === page ? 'active' : ''}
+                  style={currentPage === page ? { backgroundColor: 'yellow' } : {}}
+                >
+                {page}
+                </button>
 
             ))}
             {currentPage < totalPages &&

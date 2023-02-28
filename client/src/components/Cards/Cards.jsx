@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../Card/Card';
 import styles from './Cards.module.css';
 
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getAllCountries } from "../../redux/actions/actions";

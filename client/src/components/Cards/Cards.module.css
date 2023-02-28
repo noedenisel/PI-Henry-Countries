@@ -1,13 +1,19 @@
 .containerCard {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    margin-top: 180px;
-    height: 50%;
-    grid-column: auto auto;
-      /* TODO AJUSTAR QUE SE VEAN 5 Y 5 */
-    
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  margin-top: 10vh;
+  margin-right: 5%;
+  margin-left: 5%;
+  width: 85%;
+}
+
+
+
+
+
+

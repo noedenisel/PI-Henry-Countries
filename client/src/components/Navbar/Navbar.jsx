@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
 import SearchBar from "../SearchBar/SearchBar"
 
+
 import styles from "./Navbar.module.css"
 const NavBar = ({onSearch, name}) => {
 
@@ -15,10 +16,15 @@ const NavBar = ({onSearch, name}) => {
                 <SearchBar  onSearch={onSearch}></SearchBar>
             }
 
+
             {/**Links en Home */}
         
             { location.pathname === "/home" &&
                 <button className={styles.link }><Link to = "/all"> Todos los paises </Link> </button>
+            } 
+
+            { location.pathname === "/home" &&
+                <button className={styles.link}><Link to = "/create"> Crear Actividad Turistica </Link> </button>
             } 
 
             {/**Links en Todos los paises  */}
@@ -27,10 +33,12 @@ const NavBar = ({onSearch, name}) => {
                 <button className={styles.link}><Link to = "/home"> Pagina principal </Link> </button>
             }
 
+
+
             { location.pathname === "/all" &&
                 <button className={styles.link}><Link to = "/create"> Crear Actividad Turistica </Link> </button>
             } 
- 
+           
 
             {/**Links en Crear Actividad */}
         

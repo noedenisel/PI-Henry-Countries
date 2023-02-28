@@ -5,8 +5,9 @@
     align-items: center;
     align-content: center;
     justify-content: space-around;
+
 }
 
 .iconNav{
-    padding: 1px;
+    padding: 10px;
 }

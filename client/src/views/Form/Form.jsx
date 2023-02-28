@@ -6,12 +6,11 @@ import { getAllCountries, postActivity } from "../../redux/actions/actions"
 
 import styles from "./Form.module.css"
 
-export default function Form() {
+export default function Form(props) {
     const dispatch = useDispatch()
     const countries = useSelector((state) => state.countries)
     const countriesNames = countries.map((country) => {
-
-        return { label: country.name, value: country.id }
+        return { label: country.name, name: country.name, flag: country.flag }
 })
 
     const navigate = useNavigate()
@@ -111,69 +110,73 @@ const handleInputChange = (e) => {
             errors.season = "Ingrese la temporada"
         }
   
-    return errors
-  
+    return errors  
     }
-
-
 
     return (
         <div className={styles.formContainer}>
     
-            <h1> Crear Actividad turistica</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
-
+            
+            <form onSubmit={(e) => handleSubmit(e)} className= {styles.form}>
+            <h1 className={styles.titleForm}> Crear Actividad turistica</h1>
                 <div>
-                    <label>Nombre</label>
-                    <input
+                    <label className={styles.lb} for = "name"> Nombre: </label>
+                    <input className={styles.infos}
                         type='text'
                         value={input.name}
                         name='name'
+                        id = "name"
                         onChange={(e) => handleInputChange(e)}
+                        
                     />
-                    {<p className={styles.danger}>{errors.name ? errors.name : null}</p>}
+                    {<p className={styles.error} >{errors.name ? errors.name : null}</p>}
                 </div>
                 
                 <div>
-                    <label>Dificultad</label>
+                    <label className={styles.lb} for = "dificultad"> Dificultad: </label>
+                
                     <input
+                    className={styles.infos}
                         type='number'
                         min='1'
                         max='5'
                         value={input.difficulty}
                         name='difficulty'
+                        id = "dificultad"
                         onChange={(e) => handleInputChange(e)}
-                    />
-                    (min: 1 - max: 5)
-                    {<p className={styles.danger}>{errors.difficulty ? errors.difficulty : null}</p>}
+                    /> <span className={styles.addText}>(min: 1 - max: 5)</span>
+                    {<p className={styles.error} >{errors.difficulty ? errors.difficulty : null}</p>}
                 </div>
                 
                 <div>
-                    <label>Duracion:</label>
+                    <label className={styles.lb} for= "duracion"> Duración: </label>
                     <input
+                    className={styles.infos}
                         type='number'
                         value={input.duration}
                         name='duration'
+                        id = "duracion"
                         onChange={(e) => handleInputChange(e)}
-                    /> horas
-                    {<p className={styles.danger}>{errors.duration ? errors.duration : null}</p>}
+                    /> <span className={styles.addText}> horas </span>
+                    {<p className={styles.error} >{errors.duration ? errors.duration : null}</p>}
                 </div>
                 
                 <div>
-                    <span>Temporada:</span>
+                    <span className={styles.lb} for = "season"> Temporada: </span>
                     <select className="input" name="season" onChange={(e) => handleInputChange(e)}>
+
                         <option value="empty"> </option>
                         <option value="Invierno" key="Invierno">Invierno</option>
                         <option value="Otoño" key="Otoño">Otoño</option>
                         <option value="Primavera" key="Primavera">Primavera</option>
                         <option value="Verano" key="Verano">Verano</option>
                     </select>
-                    {errors.season && <p className="errors">{errors.season}</p>}
+                    {errors.season && <p className={styles.error} >{errors.season}</p>}
                 </div>
-                
+             
                 <div>
-                    <span>Paises donde se puede practicar:</span>
-                    <div> 
+                    <span className={styles.lb} for = "countries"> Paises donde se puede practicar: </span>
+                    <div className={styles.countrySelect}> 
                         <select multiple value='countryId' onChange={(e) => handleSelect(e)}>
                             {countriesNames.sort((a, b) => a.label.localeCompare(b.label)).map(country => {
                             return <option key={country.value} value={country.value}>{country.label}</option>
@@ -183,18 +186,22 @@ const handleInputChange = (e) => {
                 </div>
                 
             
-            <div>
-                <span>Usted esta creando una actividad turistica para los siguientes paises: </span>
-                    {input.countryId.map((c, index) => (
-                <div key={index}>
-                    <p>{c}</p>
-                    <button onClick={(e) => handleDelete(e, c)}>X</button>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <br></br>
+                    <span className={styles.alertConfirm}> Usted esta creando una actividad turistica para los siguientes paises: </span>
+                        {input.countryId.map((c) => (
+                            <div className={styles.countriesList} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <span className={styles.paisId}>{c}</span>
+                            <button onClick={(e) => handleDelete(e, c)} className={styles.btnX}>X</button>
+                            </div>
+                        ))}
                 </div>
-                ))}    
-            </div>
+
+
             
             <div>
-                <button type='submit'> Confirmar</button>
+                <button type='submit' className={styles.send}>Confirmar</button>
+                <button type='reset' className={styles.limpar}>Clear</button>
             </div>
             
             </form>
