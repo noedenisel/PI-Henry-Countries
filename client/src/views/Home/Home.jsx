@@ -1,13 +1,9 @@
 import { useEffect , useSelector} from "react"
 import { useDispatch } from "react-redux"
-import {
-    getAllCountries,
-
-} from "../../redux/actions/actions"
+import { getAllCountries } from "../../redux/actions/actions"
 
 import CardContainer from "../../components/CardContainer/CardContainer"
 import styles from "./Home.module.css"
-
 
 
 const Home = () => {
@@ -26,7 +22,6 @@ const Home = () => {
 
     return (
         <div className={styles.homeContainer}> {/* //!no renderiza el style */}
-        
             <CardContainer></CardContainer>
         </div>
     )
