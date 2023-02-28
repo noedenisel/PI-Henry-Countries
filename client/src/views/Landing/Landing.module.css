@@ -36,7 +36,7 @@
   text-align: center;
 }
   
-  button {
+  .buttonLanding {
     background: #3F979B;
     padding: 10px 2rem;
     border: 0;
@@ -46,10 +46,10 @@
     border-radius: 100rem;
     transition: 0.2s;
     font-weight: 600;
-    cursor: url("../../img/pngegg.png"), pointer; /* !No me lo reconoce */ 
+    cursor: url("../../img/pointerLanding.png"), pointer; 
   } 
   
-  button:hover {
+  .buttonLanding:hover {
     outline-offset: 4.5px;
     background: #FFED00;    
  }

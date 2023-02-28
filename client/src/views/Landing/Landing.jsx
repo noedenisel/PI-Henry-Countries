@@ -1,6 +1,7 @@
 import styles from "./Landing.module.css"
 import { Link } from "react-router-dom"
 
+
 const Landing = () => {
     return (
         <div className={styles.landingContainer} >
@@ -8,7 +9,7 @@ const Landing = () => {
             
             
             <Link to="/home">
-                <button className='button' >Let's go to tavel</button> 
+                <button className={styles.buttonLanding} >Let's go to tavel</button> 
             </Link>
 
             <footer className={styles.footer}>
