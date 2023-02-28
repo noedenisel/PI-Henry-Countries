@@ -51,9 +51,6 @@ const NavBar = ({onSearch, name}) => {
                 <button className={styles.link}><Link to = "/all"> Todos los paises </Link> </button>
             }
 
-
-
-        
         </div>
     )
 }
