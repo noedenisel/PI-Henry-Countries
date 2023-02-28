@@ -46,7 +46,7 @@
     border-radius: 100rem;
     transition: 0.2s;
     font-weight: 600;
-    cursor: url("../../img/pointerLanding.png"), pointer; 
+    cursor: url("../../img/pointeravion.png"), pointer; 
   } 
   
   .buttonLanding:hover {
