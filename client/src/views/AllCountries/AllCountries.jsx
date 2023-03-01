@@ -30,8 +30,8 @@ const AllCountries = () => {
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage //?calculo el índice del primer país que debe aparecer en la página actual. Para la primera página, este valor es "0" 
     
     const currentCountries = countries
-   .filter(country => !selectedSeason || country.activities.some(activity => activity.season === selectedSeason))
-  .slice(indexOfFirstCountry, indexOfLastCountry);
+    .filter(country => !selectedSeason || country.activities.some(activity => activity.season === selectedSeason))
+    .slice(indexOfFirstCountry, indexOfLastCountry);
 
     
     //? creo un nuevo array "currentCountries" que contiene los países que deben mostrarse en la página actual. La función "slice" se utiliza para obtener una porción de la matriz "countries" que contiene los países correspondientes a los índices "indexOfFirstCountry" y "indexOfLastCountry".

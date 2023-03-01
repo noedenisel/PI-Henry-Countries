@@ -1,11 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
-import styles from "./Card.module.css";
+import { Link, useLocation } from "react-router-dom"
+import styles from "./Card.module.css"
 
 const Card = (props) => {
   const location = useLocation();
 
-  // Si la ruta actual es diferente de "/home", no se muestra el botón de cerrar
-  const showCloseButton = location.pathname === "/home";
+  // ? Si la ruta actual es diferente de "/home", no se muestra el botón de cerrar
+  const showCloseButton = location.pathname === "/home"
 
   return (
     <div className={styles.card}>
@@ -25,7 +25,7 @@ const Card = (props) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Card;

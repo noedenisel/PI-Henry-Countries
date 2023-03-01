@@ -1,11 +1,13 @@
-import React from 'react';
-import Card from '../Card/Card';
-import styles from './Cards.module.css';
+import React from 'react'
 
-import { useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect} from 'react'
 
-import { getAllCountries } from "../../redux/actions/actions";
+import { useDispatch } from 'react-redux'
+import { getAllCountries } from "../../redux/actions/actions"
+
+import Card from '../Card/Card'
+
+import styles from './Cards.module.css'
 
 const Cards = ({ countries, onClose }) => { 
 
@@ -33,7 +35,7 @@ const Cards = ({ countries, onClose }) => {
         
       ))}
     </div>
-  );
-};
+  )
+}
 
 export default Cards;
