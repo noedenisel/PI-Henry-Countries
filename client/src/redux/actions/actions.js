@@ -2,15 +2,15 @@ import  axios from "axios"
 
 import {
     GET_ALL_COUNTRIES,
+
     ORDER_BY_NAME,
     ORDER_BY_POPULATION,
     FILTER_BY_CONTINENT,
     
     GET_ACTIVITIES,
     POST_ACTIVITIES,
+
     FILTERED_BY_ACTIVITIES
-
-
 } from "./types"
 
 
@@ -35,7 +35,6 @@ export const orderByPopulation = (order) => {
 export const filterByContinent = (payload) => {
     return {type: FILTER_BY_CONTINENT, payload: payload}
 }
-
 
 export function postActivity(payload) {
     return async function () {
@@ -74,7 +73,7 @@ export const getAllActivities = () => {
   }
   
 
-export const filterByActivities = (activities) => {
+export const filterActivityBySeason = (activities) => {
     console.log(activities)
     return { type: FILTERED_BY_ACTIVITIES, payload: activities }
 }

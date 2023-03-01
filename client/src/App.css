@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  overflow: auto;
+  /* overflow: auto; */
   background-image: url("../../client/src/img/countries.png");
   background-size: cover;
   /* display: flex;

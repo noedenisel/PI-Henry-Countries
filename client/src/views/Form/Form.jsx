@@ -1,6 +1,8 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
+
 import { useNavigate } from "react-router-dom"
+
 import { useSelector, useDispatch } from "react-redux"
 import { getAllCountries, postActivity } from "../../redux/actions/actions"
 
@@ -25,8 +27,8 @@ export default function Form(props) {
         name: "",
         difficulty: "",
         duration: "",
-    season: "",
-    countryId: [],
+        season: "",
+        countryId: [],
     })
 
 const [errors, setErrors] = useState({
@@ -115,10 +117,8 @@ const handleInputChange = (e) => {
 
     return (
         <div className={styles.formContainer}>
-    
             
             <form onSubmit={(e) => handleSubmit(e)} className= {styles.form}>
-            <h1 className={styles.titleForm}> Crear Actividad turistica</h1>
                 <div>
                     <label className={styles.lb} for = "name"> Nombre: </label>
                     <input className={styles.infos}
@@ -134,7 +134,6 @@ const handleInputChange = (e) => {
                 
                 <div>
                     <label className={styles.lb} for = "dificultad"> Dificultad: </label>
-                
                     <input
                     className={styles.infos}
                         type='number'
@@ -164,7 +163,6 @@ const handleInputChange = (e) => {
                 <div>
                     <span className={styles.lb} for = "season"> Temporada: </span>
                     <select className="input" name="season" onChange={(e) => handleInputChange(e)}>
-
                         <option value="empty"> </option>
                         <option value="Invierno" key="Invierno">Invierno</option>
                         <option value="Otoño" key="Otoño">Otoño</option>
@@ -185,7 +183,7 @@ const handleInputChange = (e) => {
                     </div>
                 </div>
                 
-            
+                {/* //TODO: poner un renderizado condicional, si no se seleccionaron paises que no se muestre */}
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <br></br>
                     <span className={styles.alertConfirm}> Usted esta creando una actividad turistica para los siguientes paises: </span>
@@ -197,13 +195,10 @@ const handleInputChange = (e) => {
                         ))}
                 </div>
 
-
-            
-            <div>
-                <button type='submit' className={styles.send}>Confirmar</button>
-                <button type='reset' className={styles.limpar}>Clear</button>
-            </div>
-            
+                <div className={styles.buttons}>
+                    <button type='submit' className={styles.send}>Confirmar</button>
+                    <button type='reset' className={styles.limpar}>Clear</button>
+                </div>
             </form>
         </div>
     )

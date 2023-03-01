@@ -64,7 +64,7 @@ const Detail = (props) => {
                         {/* Renderizar la lista de actividades dentro del campo "Actividades turísticas" en su JSX */}
                         <ul>
                             {activities.map((activity) => (
-                                <li key={activity.id}>{activity.name}</li>
+                                <li key={activity.id}> {activity.name} - Temporada: {activity.season} - Dificultad: {activity.difficulty} </li>
                             ))}
                         </ul>
                     </div>
