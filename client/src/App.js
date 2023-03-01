@@ -50,11 +50,11 @@ function App() {
     }
 
     <Routes>
-      <Route exact path="/" element= {<Landing></Landing>} ></Route>
-      <Route path = "/home" element = {<Cards countries={countries} onClose={onClose}/>} ></Route>  
-      <Route path="/home/:id" element= {<Detail></Detail>} ></Route>
-      <Route path="/create" element= {<Form></Form>} ></Route>
-      <Route  path="/all" element= {<AllCountries ></AllCountries>} ></Route> 
+      <Route exact path="/" element= {<Landing></Landing>} />
+      <Route path = "/home" element = {<Cards countries={countries} onClose={onClose}/>} />  
+      <Route path = "/home/:id" element= {<Detail></Detail>} />
+      <Route path = "/create" element= {<Form></Form>} />
+      <Route path="/all" element= {<AllCountries ></AllCountries>} /> 
     </Routes>
  
     </div>

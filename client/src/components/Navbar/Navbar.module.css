@@ -1,23 +1,17 @@
 .NavBar {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
     justify-content: space-around;
     background-color: #205e61f7;
     width: 100%;
-    height: 10%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1;
+    height: 100%;
+    /* position: fixed; */
+    /* left: 0; */
+    /* top: 0; */
 }
 
-.NavBar a { 
-    text-decoration:none;
-    display: inline-block;
-}
 
 
 
@@ -26,12 +20,10 @@ img {
 }
 
 .link { 
-    /* !No se renderiza al medio */
     display: flex;
     align-items: center;
-    background: #3F979B;
-    top: 0px;
-    border: 0;
+    background: #3F979B;  
+    vertical-align: middle;
     color: black;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1rem;
@@ -39,7 +31,6 @@ img {
     transition: 0.2s;
     font-weight: 600;
     cursor:  pointer; 
-    vertical-align: middle;
   } 
   
   .link:hover {
@@ -50,6 +41,6 @@ img {
 /* Para hacer la NavBar responsive */
 @media screen and (max-width: 768px) {
     .NavBar {
-        flex-basis: 100%;
+        flex-basis: 80%;
     }
 }

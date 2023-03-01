@@ -6,6 +6,7 @@ import CardContainer from "../../components/CardContainer/CardContainer"
 import styles from "./Home.module.css"
 
 
+
 const Home = () => {
     
 
@@ -18,10 +19,9 @@ const Home = () => {
         }
     }, [dispatch, countries.length]);
 
-    
 
     return (
-        <div className={styles.homeContainer}> {/* //!no renderiza el style */}
+        <div className={styles.home}> {/* //!no renderiza el style */}
             <CardContainer></CardContainer>
         </div>
     )
