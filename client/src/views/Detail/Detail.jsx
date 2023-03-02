@@ -6,7 +6,7 @@ import { getAllActivities } from "../../redux/actions/actions";
 
 import styles from './Detail.module.css';
 
-const Detail = (props) => {
+const Detail = () => {
     const dispatch = useDispatch();
     const activities = useSelector(state => state.activities);
     const navigate = useNavigate();
@@ -19,67 +19,71 @@ const Detail = (props) => {
         capital: "", 
         subregion: "",
         population: "",
-        touristActivities: []
-    });
+        activities: []
+    })
 
-    // Nuevo selector para obtener las actividades turísticas asociadas con el país actual
-    const CountryActivity = useSelector(state => {
-        return state.activities.filter(activity => activity.countryId === id);
-    });
-
-    useEffect(() => {
+    useEffect(  () => {
         fetch(`http://localhost:3001/countries/${id}`)
             .then((response) => response.json())
             .then((country) => {
+                console.log(country);
                 if (country.name) {
                     setCountry(country);
                 } else {
                     window.alert('No hay actividades con ese ID');
                 }
-            });
+            })
 
-        // Actualizar la lista de actividades cada vez que cambie el país actual
+        // ? Actualizar la lista de actividades cada vez que cambie el país actual
         dispatch(getAllActivities());
-    }, [id, dispatch]);
+    }, [id, dispatch])
+
+  
 
     return (
-        <div className={styles.detailContainer}>
-            <div className={styles.card}>
-                <div className={styles.cardImage}>
-                    <img src={country.flag} alt="" className={styles.img}></img>
+        <div >
+            <div className={styles.NavBarButtons}>    
+                <div>
+                    <button onClick={() => navigate("/home")}>Regresar a la página principal</button>
                 </div>
-                
-                <div className={styles.heading}> 
-                    <h1>{country.name}</h1>
-                    <span className={styles.category}>-{country.id}-</span>
-                    <div className={styles.author}> 
-                        <h2>Capital: {country.capital}</h2>
-                        <h2>Continente: {country.continent}</h2>
-                        <h4>{country.subregion}</h4>
-                        <span className={styles.name}>
-                            <h3>Población: {country.population}</h3>
-                        </span> 
-                        <h2>Actividades turísticas:</h2>
+                <div>
+                    <button onClick={() => navigate("/all")}>Todos los paises</button>
+                </div>   
+                <div>
+                    <button onClick={() => navigate("/create")}>Crear actividad turistica</button>
+                </div>          
+            </div>
 
-                        {/* Renderizar la lista de actividades dentro del campo "Actividades turísticas" en su JSX */}
-                        <ul>
-                            {activities.map((activity) => (
-                                <li key={activity.id}> {activity.name} - Temporada: {activity.season} - Dificultad: {activity.difficulty} </li>
-                            ))}
-                        </ul>
+            <div className={styles.detailContainer}>
+                <div className={styles.card}>
+                    <div className={styles.cardImage}>
+                        <img src={country.flag} alt="" className={styles.img}></img>
                     </div>
-                </div> 
-            </div>  
-            
-            <div>
-                <button onClick={() => navigate("/create")}>Crear actividad turistica</button>
-            </div>
-
-            <div>
-                <button onClick={() => navigate("/home")}>Regresar a la página principal</button>
-            </div>
+                
+                    <div className={styles.heading}> 
+                        <h1>{country.name}</h1>
+                        <span className={styles.category}>-{country.id}-</span>
+                            <div className={styles.author}> 
+                                <h2>Capital: {country.capital}</h2>
+                                <h2>Continente: {country.continent}</h2>
+                                <h4>{country.subregion}</h4>
+                                <span className={styles.name}>
+                                <h3>Población: {country.population}</h3>
+                                </span> 
+                                <h2>Actividades turísticas:</h2>
+                                    <ul>
+                                        { country.activities.map((activity) => (
+                                            <li className={styles.actividades} key={activity.id}> {activity.name} 
+                                                <span>Temporada: {activity.season} - Dificultad: {activity.difficulty}</span>  
+                                            </li>
+                                        ))} 
+                                    </ul>
+                            </div>
+                    </div> 
+                </div>  
+            </div> 
         </div>
-    );
-};
+    )
+}
 
-export default Detail;
+export default Detail
