@@ -1,8 +1,6 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
-
 import { useNavigate } from "react-router-dom"
-
 import { useSelector, useDispatch } from "react-redux"
 import { getAllCountries, postActivity } from "../../redux/actions/actions"
 
@@ -10,14 +8,14 @@ import styles from "./Form.module.css"
 
 export default function Form(props) {
     const dispatch = useDispatch()
-    const countries = useSelector((state) => state.countries)
+     const countries = useSelector((state) => state.countries)
     const countriesNames = countries.map((country) => {
-        return { label: country.name, name: country.name, flag: country.flag }
+
+        return { label: country.name, value: country.id }
 })
 
     const navigate = useNavigate()
     const activities = useSelector((state) => state.activities)
-
 
     useEffect(() => {
     dispatch(getAllCountries())
@@ -27,8 +25,8 @@ export default function Form(props) {
         name: "",
         difficulty: "",
         duration: "",
-        season: "",
-        countryId: [],
+    season: "",
+    countryId: [],
     })
 
 const [errors, setErrors] = useState({
@@ -38,25 +36,25 @@ const [errors, setErrors] = useState({
     season: "",
     })
 
-const handleInputChange = (e) => {
-    setInputData({
-    ...input,
-    [e.target.name]: e.target.value,
-    })
-    setErrors(
-        validate({
+    const handleInputChange = (e) => {
+        setInputData({
         ...input,
         [e.target.name]: e.target.value,
+        })
+        setErrors(
+            validate({
+            ...input,
+            [e.target.name]: e.target.value,
         })
     )
     }
 
     const handleSelect = (e) => {
         setInputData({
-        ...input,
-        countryId: [...input.countryId, e.target.value],
-        })
-    }
+            ...input,
+            countryId: [...input.countryId, e.target.value],
+            })
+        }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -70,7 +68,7 @@ const handleInputChange = (e) => {
                 season: "",
                 countryId: [],
         })
-        navigate("/home")
+        navigate("/all")
         } else {
             e.preventDefault()
             alert("Por favor complete todos los campos")
@@ -78,12 +76,12 @@ const handleInputChange = (e) => {
     }
 
     const handleDelete = (e, d) => {
-    e.preventDefault()
-    setInputData({
-    ...input,
-    countryId: input.countryId.filter((country) => country !== d),
-    })
-    }
+        e.preventDefault()
+        setInputData({
+        ...input,
+        countryId: input.countryId.filter((country) => country !== d),
+        })
+        }
 
     const validate = (input) => {
         let errors = {}
