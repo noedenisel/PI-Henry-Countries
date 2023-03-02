@@ -183,21 +183,19 @@ const handleInputChange = (e) => {
                     </div>
                 </div>
                 
-                {/* //TODO: poner un renderizado condicional, si no se seleccionaron paises que no se muestre */}
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <br></br>
-                    <span className={styles.alertConfirm}> Usted esta creando una actividad turistica para los siguientes paises: </span>
-                        {input.countryId.map((c) => (
-                            <div className={styles.countriesList} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <br></br>
+                    {input.countryId.length > 0 && (
+                        <span className={styles.alertConfirm}> Usted está creando una actividad turística para los siguientes países: </span>)}
+                    {input.countryId.map((c) => (
+                        <div key={c} className={styles.countriesList} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <span className={styles.paisId}>{c}</span>
                             <button onClick={(e) => handleDelete(e, c)} className={styles.btnX}>X</button>
-                            </div>
-                        ))}
-                </div>
-
-                <div className={styles.buttons}>
-                    <button type='submit' className={styles.send}>Confirmar</button>
-                    <button type='reset' className={styles.limpar}>Clear</button>
+                        </div>
+                    ))}
+                    <div className={styles.buttons}>
+                        <button type='submit' className={styles.send}>Confirmar</button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -13,7 +13,7 @@ const Landing = () => {
             
             
             <Link to="/home">
-                <button className={styles.buttonLanding} >Let's go to tavel</button> 
+                <button className={styles.buttonLanding} >Let's go to travel</button> 
             </Link>
 
             <footer className={styles.footer}>

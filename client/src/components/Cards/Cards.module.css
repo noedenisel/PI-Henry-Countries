@@ -1,16 +1,22 @@
 .containerCard {
+/*  TODO cuando achico la ventana del nav se me van hacia arriba las cards en vez de scrollear hacia abajo */
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 20%;
-  z-index: 999;
-  max-height: 99vh;
-  overflow-y: auto;
+  margin-top: 100px;  
+  border: 2px solid violet
+   
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+  width: 80%; */
 }
-
 
 
 
