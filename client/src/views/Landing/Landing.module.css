@@ -6,19 +6,40 @@
   width: 100%;
   height: 100%;
   background-color: #000000;
-  /* background-image: url("../../img/countries.png");
-  background-size: cover; */
   flex-direction: column; 
 }
 
+.mapa{  /* TODO: Arreglar el salto de la imagen */
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: -30px -20px 0 0 rgba(153, 153, 153, 0.186) inset,
+              -70px -30px 0 0 rgba(0,0,0, .1) inset,
+              5px 5px 0 0 rgba(255, 255, 255, 0.1) inset;
+  background: url("../../img/mapa2.png");
+  background-size: cover;
+  animation: tierra-girando 5s infinite linear;
+  -webkit-animation: tierra-girando 10s infinite linear; /* para navegadores Safari/Chrome antiguos */
+  }
+
+  @keyframes tierra-girando{
+    from{
+      background-position: left-center;
+      } to {
+        background-position: -396px center;
+        }
+  }
+
 .titleLanding {
-    color: black;
-    background: #fffc00;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F9F54B, #f9f8a4);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #F9F54B,#f9f8a4 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-radius: 1rem;
-    width:35%;
-    box-shadow: 0px 10px 40px 0px yellow;
+  color: black;
+  background: #fffc00;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F9F54B, #f9f8a4);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F9F54B,#f9f8a4 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 1rem;
+  width:35%;
+  margin-top: -80px;
+  box-shadow: 0px 10px 40px 0px yellow;
+  z-index: 9999;
 }
     
   
@@ -45,11 +66,13 @@
   transition: 0.2s;
   font-weight: 600;
   cursor: url("../../img/pointeravion.png"), pointer; 
+
 } 
   
 .buttonLanding:hover {
   outline-offset: 4.5px;
   background: #FFED00;    
+  z-index: 9999;
 }
 
 .footer{
