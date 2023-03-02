@@ -5,14 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* overflow: auto; */
   text-align: center;
   align-items: center;
   align-content: center;
   justify-content: center;
-  /* background-image: url("../../client/src/img/countries.png");
-  background-size: cover; */
-  border: 5px solid red;
   width: 100%;
   height: 100vh;
 }
