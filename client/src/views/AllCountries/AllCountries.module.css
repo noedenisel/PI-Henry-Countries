@@ -1,18 +1,17 @@
 .AllContainer {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    /* background-image: url("../../img/countries.png");
-    background-size: cover; */
 }
+
 
       
 .filtersContainer {
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 60px;
   align-items: center;
   justify-content: space-around;
@@ -24,10 +23,10 @@
   border-top: 5px solid #205e61f7;
 }
     
-    .pagination {
-      display: flex;
-      position: fixed;
-      bottom: 5px;
-      justify-content: center;
-  }
+.pagination {
+  display: flex;
+  position: fixed;
+  bottom: 5px;
+  justify-content: center;
+}
   
